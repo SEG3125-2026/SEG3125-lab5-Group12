@@ -1,0 +1,88 @@
+:root {
+  --ink: #1f2933;
+  --muted: #6b7280;
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --accent: #1f6feb;
+}
+
+body {
+  font-family: "Source Sans 3", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.app-shell {
+  max-width: 880px;
+}
+
+.hero-simple {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background-image: linear-gradient(
+      120deg,
+      rgba(16, 24, 40, 0.78),
+      rgba(16, 24, 40, 0.42)
+    ),
+    url("Images/LandingPhoto.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-copy {
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
+}
+
+.hero-copy .lead,
+.hero-copy .small {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.hero-copy .btn-light {
+  font-weight: 700;
+}
+
+.option-image {
+  height: 160px;
+  object-fit: cover;
+}
+
+.option-card {
+  cursor: pointer;
+  border: 1px solid #dbe3ec;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.service-info-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-card:hover,
+.option-card:focus-within,
+.option-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0.4rem 0.9rem rgba(31, 111, 235, 0.12) !important;
+  transform: translateY(-1px);
+}
+
+.text-muted {
+  color: var(--muted) !important;
+}
+
+@media (min-width: 768px) {
+  .option-image {
+    height: 180px;
+  }
+}

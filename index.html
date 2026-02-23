@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curl Up & Dye | Book Appointment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="custom.css" />
+  </head>
+  <body>
+    <header class="hero-simple border-bottom">
+      <div class="container app-shell hero-copy">
+        <p class="text-uppercase fw-semibold small mb-2">Mobile Web App - Made by Group 12
+        </p>
+        <h1 class="display-5 fw-bold mb-3">Curl Up & Dye</h1>
+        <p class="lead mb-4">
+          We are a hair salon that specializes in curly hair. We offer a variety of services including haircuts, coloring, and styling. We also sell hair products that are specifically designed for curly hair.
+        </p>
+        <a class="btn btn-light btn-lg" href="#appointment-form">Explore Services</a>
+      </div>
+    </header>
+
+    <main class="container app-shell pt-2 pb-4 pt-md-3 pb-md-5">
+      <section class="mb-4" aria-labelledby="shop-info-title">
+        <h2 id="shop-info-title" class="h5 mb-3">Shop Info</h2>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="mb-2">
+              <i class="bi bi-geo-alt-fill me-2" aria-hidden="true"></i>
+              <strong>Address:</strong> 100 Somerset St W, Ottawa, ON
+            </p>
+            <p class="mb-2">
+              <i class="bi bi-clock-fill me-2" aria-hidden="true"></i>
+              <strong>Hours:</strong> Mon-Sat 9:00 AM-6:00 PM, Sun 10:00 AM-5:00 PM
+            </p>
+            <p class="mb-0">
+              <i class="bi bi-telephone-fill me-2" aria-hidden="true"></i>
+              <strong>Contact:</strong> (613) 345-6789 | hello@salon.ca
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-4" aria-labelledby="reviews-title">
+        <h2 id="reviews-title" class="h5 mb-3">Reviews & Testimonials</h2>
+        <div class="row g-3">
+          <div class="col-12 col-md-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <p class="mb-2 text-warning" aria-label="5 star rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </p>
+                <p class="small mb-2">“Best curly cut I have had in years. They explained every step and I left with an easy routine.”</p>
+                <p class="small text-muted mb-0">- Nadia P.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <p class="mb-2 text-warning" aria-label="5 star rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </p>
+                <p class="small mb-2">“The wash and set made my curls last all week. Booking was simple and the service was on time.”</p>
+                <p class="small text-muted mb-0">- Carmen L.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <p class="mb-2 text-warning" aria-label="5 star rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                </p>
+                <p class="small mb-2">“Great silk press with clear heat protection tips. Staff was friendly and very professional.”</p>
+                <p class="small text-muted mb-0">- Janelle R.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <form id="appointment-form" class="needs-validation" novalidate>
+        <section class="card shadow-sm mb-4">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h2 class="h5 mb-0">Booking Progress</h2>
+              <span class="badge text-bg-primary" id="progress-text">Step 1 of 4</span>
+            </div>
+            <div class="progress" role="progressbar" aria-label="Booking progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25">
+              <div class="progress-bar" id="progress-bar" style="width: 25%"></div>
+            </div>
+            <div class="alert alert-light border mt-3 mb-0" aria-live="polite">
+              <strong>You chose:</strong>
+              <span id="selection-summary" class="ms-1 text-muted">No service/time selected yet.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-4" aria-labelledby="services-title">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 id="services-title" class="h5 mb-0">1. Choose a Service</h2>
+            <span class="badge text-bg-secondary">Required</span>
+          </div>
+          <div class="row g-3">
+            <div class="col-12 col-md-4">
+              <div class="position-relative">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-light border rounded-circle service-info-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#serviceInfoModal"
+                  data-service-title="Dry Curl Sculpting"
+                  data-service-details="A dry-cut technique performed on natural curls to ensure the shape is perfect when the hair is worn down."
+                  aria-label="More info about Dry Curl Sculpting"
+                >
+                  <i class="bi bi-info-lg"></i>
+                </button>
+                <label class="card h-100 shadow-sm option-card" for="service-sculpting">
+                  <img src="Images/Styling/curl.jpeg" class="card-img-top option-image" alt="Dry Curl Sculpting style result" />
+                  <div class="card-body">
+                    <input class="form-check-input me-2" type="radio" name="service" id="service-sculpting" value="Dry Curl Sculpting | $110 | 60 min" />
+                    <span class="fw-semibold">Dry Curl Sculpting</span>
+                    <p class="mb-1 small text-muted">$110 · 60 minutes</p>
+                    <p class="small text-muted mb-0">Dry-cut shaping for natural curls worn down.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="position-relative">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-light border rounded-circle service-info-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#serviceInfoModal"
+                  data-service-title="The Signature Wash & Set"
+                  data-service-details="Includes a detoxifying scalp scrub, deep hydration masque, and a finger-coiled or rake and shake definition style."
+                  aria-label="More info about The Signature Wash and Set"
+                >
+                  <i class="bi bi-info-lg"></i>
+                </button>
+                <label class="card h-100 shadow-sm option-card" for="service-wash-set">
+                  <img src="Images/Styling/washAndSet.jpeg" class="card-img-top option-image" alt="Signature Wash and Set result" />
+                  <div class="card-body">
+                    <input class="form-check-input me-2" type="radio" name="service" id="service-wash-set" value="The Signature Wash & Set | $85 | 75 min" />
+                    <span class="fw-semibold">The Signature Wash & Set</span>
+                    <p class="mb-1 small text-muted">$85 · 75 minutes</p>
+                    <p class="small text-muted mb-0">Detox scrub, deep hydration, and curl definition finish.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="position-relative">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-light border rounded-circle service-info-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#serviceInfoModal"
+                  data-service-title="The Crown Silk Press"
+                  data-service-details="For those who want a temporary straight look using high-heat protection and steam infusion to maintain curl elasticity."
+                  aria-label="More info about The Crown Silk Press"
+                >
+                  <i class="bi bi-info-lg"></i>
+                </button>
+                <label class="card h-100 shadow-sm option-card" for="service-silk-press">
+                  <img src="Images/Styling/silkPress.jpeg" class="card-img-top option-image" alt="Crown Silk Press result" />
+                  <div class="card-body">
+                    <input class="form-check-input me-2" type="radio" name="service" id="service-silk-press" value="The Crown Silk Press | $95 | 80 min" />
+                    <span class="fw-semibold">The Crown Silk Press</span>
+                    <p class="mb-1 small text-muted">$95 · 80 minutes</p>
+                    <p class="small text-muted mb-0">Temporary straight look with heat and steam protection.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+          <p class="text-danger small mt-2 d-none" id="service-error">Please select a service.</p>
+        </section>
+
+        <section class="mb-4" aria-labelledby="staff-title">
+          <h2 id="staff-title" class="h5 mb-3">2. Pick a Stylist (Optional)</h2>
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label class="card shadow-sm option-card" for="staff-no-pref">
+                <div class="card-body d-flex align-items-start gap-3">
+                  <input class="form-check-input mt-1 flex-shrink-0" type="radio" name="staff" id="staff-no-pref" value="No preference" checked />
+                  <div class="flex-grow-1">
+                    <p class="fw-semibold mb-1">No Preference</p>
+                    <p class="mb-1 small text-muted">Best match based on next available schedule.</p>
+                    <p class="mb-0 small text-muted">Great if you want the earliest appointment options.</p>
+                  </div>
+                  <span class="rounded-circle border d-inline-flex align-items-center justify-content-center flex-shrink-0" style="width: 2.5rem; height: 2.5rem;">
+                    <i class="bi bi-person text-muted"></i>
+                  </span>
+                </div>
+              </label>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="card shadow-sm option-card" for="staff-sofia">
+                <div class="card-body d-flex align-items-start gap-3">
+                  <input class="form-check-input mt-1 flex-shrink-0" type="radio" name="staff" id="staff-sofia" value="Sofia" />
+                  <div class="flex-grow-1">
+                    <p class="fw-semibold mb-1">Sofia</p>
+                    <p class="mb-1 small text-muted"><strong>Role:</strong> Senior Curl Stylist</p>
+                    <p class="mb-0 small text-muted">Precision curl cuts and hydration-first styling.</p>
+                  </div>
+                  <img src="Images/People/Sofia.jpeg" alt="Sofia portrait" class="rounded-circle flex-shrink-0 border" style="width: 2.5rem; height: 2.5rem; object-fit: cover;" />
+                </div>
+              </label>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="card shadow-sm option-card" for="staff-malik">
+                <div class="card-body d-flex align-items-start gap-3">
+                  <input class="form-check-input mt-1 flex-shrink-0" type="radio" name="staff" id="staff-malik" value="Malik" />
+                  <div class="flex-grow-1">
+                    <p class="fw-semibold mb-1">Malik</p>
+                    <p class="mb-1 small text-muted"><strong>Role:</strong> Texture Specialist</p>
+                    <p class="mb-0 small text-muted">Clean shape work and detailed finishing.</p>
+                  </div>
+                  <img src="Images/People/Malik.jpeg" alt="Malik portrait" class="rounded-circle flex-shrink-0 border" style="width: 2.5rem; height: 2.5rem; object-fit: cover;" />
+                </div>
+              </label>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="card shadow-sm option-card" for="staff-sabrina">
+                <div class="card-body d-flex align-items-start gap-3">
+                  <input class="form-check-input mt-1 flex-shrink-0" type="radio" name="staff" id="staff-sabrina" value="Sabrina" />
+                  <div class="flex-grow-1">
+                    <p class="fw-semibold mb-1">Sabrina</p>
+                    <p class="mb-1 small text-muted"><strong>Role:</strong> Color Specialist</p>
+                    <p class="mb-0 small text-muted">Dimensional color and low-stress processing.</p>
+                  </div>
+                  <img src="Images/People/Sabrina.jpeg" alt="Sabrina portrait" class="rounded-circle flex-shrink-0 border" style="width: 2.5rem; height: 2.5rem; object-fit: cover;" />
+                </div>
+              </label>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="card shadow-sm option-card" for="staff-anne">
+                <div class="card-body d-flex align-items-start gap-3">
+                  <input class="form-check-input mt-1 flex-shrink-0" type="radio" name="staff" id="staff-anne" value="Anne" />
+                  <div class="flex-grow-1">
+                    <p class="fw-semibold mb-1">Anne</p>
+                    <p class="mb-1 small text-muted"><strong>Role:</strong> Scalp Care Specialist</p>
+                    <p class="mb-0 small text-muted">Scalp care and long-lasting curl definition.</p>
+                  </div>
+                  <img src="Images/People/Anne.jpeg" alt="Anne portrait" class="rounded-circle flex-shrink-0 border" style="width: 2.5rem; height: 2.5rem; object-fit: cover;" />
+                </div>
+              </label>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="card shadow-sm option-card" for="staff-link">
+                <div class="card-body d-flex align-items-start gap-3">
+                  <input class="form-check-input mt-1 flex-shrink-0" type="radio" name="staff" id="staff-link" value="Link" />
+                  <div class="flex-grow-1">
+                    <p class="fw-semibold mb-1">Link</p>
+                    <p class="mb-1 small text-muted"><strong>Role:</strong> Student Stylist</p>
+                    <p class="mb-0 small text-muted">Silk press specialist with heat-protection focus.</p>
+                  </div>
+                  <img src="Images/People/Link.jpeg" alt="Link portrait" class="rounded-circle flex-shrink-0 border" style="width: 2.5rem; height: 2.5rem; object-fit: cover;" />
+                </div>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-4" aria-labelledby="datetime-title">
+          <h2 id="datetime-title" class="h5 mb-3">3. Date and Time</h2>
+          <div class="card shadow-sm">
+            <div class="card-body row g-3">
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="date">Date</label>
+                <input type="date" class="form-control" id="date" required />
+                <div class="invalid-feedback">Please choose a booking date.</div>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="time">Time</label>
+                <select class="form-select" id="time" required disabled>
+                  <option value="" selected>Select a time slot</option>
+                  <option>09:00 AM</option>
+                  <option>10:00 AM</option>
+                  <option>11:00 AM</option>
+                  <option>01:00 PM</option>
+                  <option>03:00 PM</option>
+                  <option>05:00 PM</option>
+                </select>
+                <div class="invalid-feedback">Please choose a time slot.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-4" aria-labelledby="contact-title">
+          <h2 id="contact-title" class="h5 mb-3">4. Contact Details</h2>
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="mb-3">
+                <label class="form-label" for="name">Full name</label>
+                <input type="text" class="form-control" id="name" required aria-describedby="nameHelp" />
+                <div id="nameHelp" class="form-text">Used to hold your appointment at check-in.</div>
+                <div class="invalid-feedback">Please provide your name.</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="contact">Email or phone</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contact"
+                  required
+                  aria-describedby="contactHelp"
+                  data-bs-toggle="tooltip"
+                  data-bs-title="Used only for confirmations and reminders."
+                />
+                <div id="contactHelp" class="form-text">We will send your confirmation and reminders here.</div>
+                <div class="invalid-feedback">Please provide an email or phone number.</div>
+              </div>
+
+              <div class="mb-0">
+                <label class="form-label" for="notes">Notes (optional)</label>
+                <textarea class="form-control" id="notes" rows="3" placeholder="Allergies, sensitivities, or style goals"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-4" aria-label="Confirmation action">
+          <div class="alert alert-secondary" role="note">
+            Cancellation policy: please give at least 24 hours notice to reschedule.
+          </div>
+          <button type="submit" id="submit-btn" class="btn btn-primary btn-lg w-100 d-none">
+            <span class="submit-label">Confirm Appointment</span>
+            <span class="spinner-border spinner-border-sm ms-2 d-none" aria-hidden="true"></span>
+          </button>
+        </section>
+      </form>
+
+      <section id="confirmation" class="d-none" aria-live="assertive">
+        <div class="alert alert-success shadow-sm">
+          <h2 class="h5">Booking Confirmed</h2>
+          <p class="mb-1" id="confirmation-text"></p>
+          <p class="mb-0"><strong>Reference #:</strong> CUD-2026-0412</p>
+        </div>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h3 class="h6 mb-3">Find Us</h3>
+            <iframe
+              src="https://www.google.com/maps?q=45.4201,-75.7003&z=15&output=embed"
+              width="100%"
+              height="300"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Curl Up and Dye Salon location on Google Maps"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <div class="modal fade" id="serviceInfoModal" tabindex="-1" aria-labelledby="serviceInfoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title h5 mb-0" id="serviceInfoTitle">Service Info</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="serviceInfoBody"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const dateInput = document.getElementById("date");
+      const timeInput = document.getElementById("time");
+      const nameInput = document.getElementById("name");
+      const contactInput = document.getElementById("contact");
+      const summary = document.getElementById("selection-summary");
+      const serviceInputs = document.querySelectorAll('input[name="service"]');
+      const staffInputs = document.querySelectorAll('input[name="staff"]');
+      const submitBtn = document.getElementById("submit-btn");
+      const form = document.getElementById("appointment-form");
+      const serviceError = document.getElementById("service-error");
+      const confirmation = document.getElementById("confirmation");
+      const confirmationText = document.getElementById("confirmation-text");
+      const progressBar = document.getElementById("progress-bar");
+      const progressText = document.getElementById("progress-text");
+      const serviceInfoModal = document.getElementById("serviceInfoModal");
+      const serviceInfoTitle = document.getElementById("serviceInfoTitle");
+      const serviceInfoBody = document.getElementById("serviceInfoBody");
+      const allTimeSlots = Array.from(timeInput.options)
+        .slice(1)
+        .map((option) => option.value);
+
+      dateInput.min = new Date().toISOString().split("T")[0];
+
+      document
+        .querySelectorAll('[data-bs-toggle="tooltip"]')
+        .forEach((el) => new bootstrap.Tooltip(el));
+
+      serviceInfoModal.addEventListener("show.bs.modal", (event) => {
+        const trigger = event.relatedTarget;
+        serviceInfoTitle.textContent = trigger.getAttribute("data-service-title");
+        serviceInfoBody.textContent = trigger.getAttribute("data-service-details");
+      });
+
+      function getCheckedValue(name) {
+        return document.querySelector(`input[name="${name}"]:checked`)?.value || "";
+      }
+
+      function getRandomSubset(values, min, max) {
+        const pool = [...values];
+        const targetSize = Math.min(
+          pool.length,
+          Math.floor(Math.random() * (max - min + 1)) + min,
+        );
+
+        for (let i = pool.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+
+        const picked = pool.slice(0, targetSize);
+        const ordered = values.filter((slot) => picked.includes(slot));
+        return ordered;
+      }
+
+      function updateAvailableTimes() {
+        const selectedStaff = getCheckedValue("staff");
+        const previousTime = timeInput.value;
+        const availableTimes =
+          selectedStaff && selectedStaff !== "No preference"
+            ? getRandomSubset(allTimeSlots, 2, 5)
+            : allTimeSlots;
+
+        timeInput.innerHTML = '<option value="" selected>Select a time slot</option>';
+        availableTimes.forEach((slot) => {
+          const option = document.createElement("option");
+          option.value = slot;
+          option.textContent = slot;
+          timeInput.appendChild(option);
+        });
+
+        if (availableTimes.includes(previousTime)) {
+          timeInput.value = previousTime;
+        } else {
+          timeInput.value = "";
+        }
+      }
+
+      function updateSelectedState(name) {
+        document
+          .querySelectorAll(`input[name="${name}"]`)
+          .forEach((input) => input.closest(".option-card").classList.remove("selected"));
+
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        if (checked) checked.closest(".option-card").classList.add("selected");
+      }
+
+      function updateFlow() {
+        const service = getCheckedValue("service");
+        const staff = getCheckedValue("staff") || "No preference";
+        const date = dateInput.value;
+        const time = timeInput.value;
+        const name = nameInput.value.trim();
+        const contact = contactInput.value.trim();
+
+        const hasDate = Boolean(date);
+        timeInput.disabled = !hasDate;
+        if (!hasDate && timeInput.value) {
+          timeInput.value = "";
+        }
+
+        const displayedTime = hasDate ? time : "";
+
+        if (service || date || displayedTime) {
+          summary.textContent = `Service: ${service || "-"} | Staff: ${staff} | Date: ${date || "-"} | Time: ${displayedTime || "-"}`;
+        } else {
+          summary.textContent = "No service/time selected yet.";
+        }
+
+        let step = 1;
+        if (service) step = 2;
+        if (service && date && displayedTime) step = 3;
+        if (service && date && displayedTime && name && contact) step = 4;
+
+        const percentMap = { 1: 25, 2: 50, 3: 75, 4: 100 };
+        progressBar.style.width = `${percentMap[step]}%`;
+        progressBar.parentElement.setAttribute("aria-valuenow", String(percentMap[step]));
+        progressText.textContent = `Step ${step} of 4`;
+
+        const readyToConfirm = Boolean(service && date && displayedTime && name && contact);
+        submitBtn.classList.toggle("d-none", !readyToConfirm);
+      }
+
+      serviceInputs.forEach((input) => {
+        input.addEventListener("change", () => {
+          serviceError.classList.add("d-none");
+          updateSelectedState("service");
+          updateFlow();
+        });
+      });
+
+      staffInputs.forEach((input) => {
+        input.addEventListener("change", () => {
+          updateAvailableTimes();
+          updateSelectedState("staff");
+          updateFlow();
+        });
+      });
+
+      [dateInput, timeInput, nameInput, contactInput].forEach((input) => {
+        input.addEventListener("input", updateFlow);
+        input.addEventListener("change", updateFlow);
+      });
+
+      updateAvailableTimes();
+      updateSelectedState("staff");
+      updateFlow();
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!getCheckedValue("service")) {
+          serviceError.classList.remove("d-none");
+        }
+
+        if (!form.checkValidity() || !getCheckedValue("service")) {
+          form.classList.add("was-validated");
+          return;
+        }
+
+        const spinner = submitBtn.querySelector(".spinner-border");
+        submitBtn.disabled = true;
+        spinner.classList.remove("d-none");
+
+        setTimeout(() => {
+          spinner.classList.add("d-none");
+          submitBtn.disabled = false;
+
+          confirmationText.textContent = `${nameInput.value.trim()}, your ${getCheckedValue("service")} appointment is booked for ${dateInput.value} at ${timeInput.value}.`;
+          confirmation.classList.remove("d-none");
+          confirmation.scrollIntoView({ behavior: "smooth" });
+        }, 700);
+      });
+    </script>
+  </body>
+</html>
