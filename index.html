@@ -20,9 +20,44 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+    <script src="https://kit.fontawesome.com/bb29a85c45.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
     <link rel="stylesheet" href="custom.css" />
   </head>
-  <body>
+  <body id="top">
+    <nav class="navbar navbar-expand-lg top-nav sticky-top border-bottom border-light-subtle">
+      <div class="container app-shell">
+        <a class="navbar-brand fw-semibold" href="#top">Curl Up & Dye</a>
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="topNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Salon</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#shop-info-title">Shop Info</a></li>
+                <li><a class="dropdown-item" href="#reviews-title">Reviews</a></li>
+                <li><a class="dropdown-item" href="#contact-title">Contact</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Booking</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#services-title">Services</a></li>
+                <li><a class="dropdown-item" href="#staff-title">Experts</a></li>
+                <li><a class="dropdown-item" href="#datetime-title">Date & Time</a></li>
+                <li><a class="dropdown-item" href="#payment-title">Payment</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <header class="hero-simple border-bottom">
       <div class="container app-shell hero-copy">
         <p class="text-uppercase fw-semibold small mb-2">Mobile Web App - Made by Group 12
@@ -37,7 +72,7 @@
 
     <main class="container app-shell pt-2 pb-4 pt-md-3 pb-md-5">
       <section class="mb-4" aria-labelledby="shop-info-title">
-        <h2 id="shop-info-title" class="h5 mb-3">Shop Info</h2>
+        <h2 id="shop-info-title" class="h5 mb-3"><i class="fa-solid fa-store me-2 section-title-icon" aria-hidden="true"></i>Shop Info</h2>
         <div class="card shadow-sm">
           <div class="card-body">
             <p class="mb-2">
@@ -46,7 +81,7 @@
             </p>
             <p class="mb-2">
               <i class="bi bi-clock-fill me-2" aria-hidden="true"></i>
-              <strong>Hours:</strong> Mon-Sat 9:00 AM-6:00 PM, Sun 10:00 AM-5:00 PM
+              <strong>Hours:</strong> Mon-Fri 9:00 AM-5:00 PM (weekends closed)
             </p>
             <p class="mb-0">
               <i class="bi bi-telephone-fill me-2" aria-hidden="true"></i>
@@ -57,7 +92,7 @@
       </section>
 
       <section class="mb-4" aria-labelledby="reviews-title">
-        <h2 id="reviews-title" class="h5 mb-3">Reviews & Testimonials</h2>
+        <h2 id="reviews-title" class="h5 mb-3"><i class="fa-solid fa-comments me-2 section-title-icon" aria-hidden="true"></i>Reviews & Testimonials</h2>
         <div class="row g-3">
           <div class="col-12 col-md-4">
             <div class="card h-100 shadow-sm">
@@ -100,10 +135,10 @@
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h2 class="h5 mb-0">Booking Progress</h2>
-              <span class="badge text-bg-primary" id="progress-text">Step 1 of 4</span>
+              <span class="badge text-bg-primary" id="progress-text">Step 1 of 5</span>
             </div>
-            <div class="progress" role="progressbar" aria-label="Booking progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25">
-              <div class="progress-bar" id="progress-bar" style="width: 25%"></div>
+            <div class="progress" role="progressbar" aria-label="Booking progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
+              <div class="progress-bar" id="progress-bar" style="width: 20%"></div>
             </div>
             <div class="alert alert-light border mt-3 mb-0" aria-live="polite">
               <strong>You chose:</strong>
@@ -114,7 +149,7 @@
 
         <section class="mb-4" aria-labelledby="services-title">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 id="services-title" class="h5 mb-0">1. Choose a Service</h2>
+            <h2 id="services-title" class="h5 mb-0"><i class="fa-solid fa-scissors me-2 section-title-icon" aria-hidden="true"></i>1. Services</h2>
             <span class="badge text-bg-secondary">Required</span>
           </div>
           <div class="row g-3">
@@ -195,7 +230,7 @@
         </section>
 
         <section class="mb-4" aria-labelledby="staff-title">
-          <h2 id="staff-title" class="h5 mb-3">2. Pick a Stylist (Optional)</h2>
+          <h2 id="staff-title" class="h5 mb-3"><i class="fa-solid fa-user-group me-2 section-title-icon" aria-hidden="true"></i>2. Experts (Optional)</h2>
           <div class="row g-3">
             <div class="col-12 col-md-6">
               <label class="card shadow-sm option-card" for="staff-no-pref">
@@ -281,60 +316,108 @@
         </section>
 
         <section class="mb-4" aria-labelledby="datetime-title">
-          <h2 id="datetime-title" class="h5 mb-3">3. Date and Time</h2>
+          <h2 id="datetime-title" class="h5 mb-3"><i class="fa-solid fa-calendar-check me-2 section-title-icon" aria-hidden="true"></i>3. Date and Time</h2>
           <div class="card shadow-sm">
             <div class="card-body row g-3">
               <div class="col-12 col-md-6">
                 <label class="form-label" for="date">Date</label>
-                <input type="date" class="form-control" id="date" required />
+                <input type="text" class="form-control reactive-field" id="date" required placeholder="Select a date" />
                 <div class="invalid-feedback">Please choose a booking date.</div>
               </div>
               <div class="col-12 col-md-6">
                 <label class="form-label" for="time">Time</label>
-                <select class="form-select" id="time" required disabled>
+                <select class="form-select reactive-field" id="time" required disabled>
                   <option value="" selected>Select a time slot</option>
                   <option>09:00 AM</option>
                   <option>10:00 AM</option>
                   <option>11:00 AM</option>
+                  <option>12:00 PM</option>
                   <option>01:00 PM</option>
+                  <option>02:00 PM</option>
                   <option>03:00 PM</option>
-                  <option>05:00 PM</option>
+                  <option>04:00 PM</option>
                 </select>
                 <div class="invalid-feedback">Please choose a time slot.</div>
+              </div>
+              <div class="col-12">
+                <div id="availability-feedback" class="small text-muted" aria-live="polite"></div>
               </div>
             </div>
           </div>
         </section>
 
         <section class="mb-4" aria-labelledby="contact-title">
-          <h2 id="contact-title" class="h5 mb-3">4. Contact Details</h2>
+          <h2 id="contact-title" class="h5 mb-3"><i class="fa-solid fa-address-card me-2 section-title-icon" aria-hidden="true"></i>4. Contact Details</h2>
           <div class="card shadow-sm">
             <div class="card-body">
               <div class="mb-3">
                 <label class="form-label" for="name">Full name</label>
-                <input type="text" class="form-control" id="name" required aria-describedby="nameHelp" />
+                <input type="text" class="form-control reactive-field" id="name" required aria-describedby="nameHelp" pattern="^[A-Za-z][A-Za-z\s'-]{1,59}$" />
                 <div id="nameHelp" class="form-text">Used to hold your appointment at check-in.</div>
-                <div class="invalid-feedback">Please provide your name.</div>
+                <div class="invalid-feedback">Name must contain letters only (plus spaces, apostrophes, or hyphens).</div>
               </div>
 
               <div class="mb-3">
-                <label class="form-label" for="contact">Email or phone</label>
+                <label class="form-label" for="email">Email</label>
                 <input
-                  type="text"
-                  class="form-control"
-                  id="contact"
+                  type="email"
+                  class="form-control reactive-field"
+                  id="email"
                   required
-                  aria-describedby="contactHelp"
-                  data-bs-toggle="tooltip"
-                  data-bs-title="Used only for confirmations and reminders."
+                  aria-describedby="emailHelp"
                 />
-                <div id="contactHelp" class="form-text">We will send your confirmation and reminders here.</div>
-                <div class="invalid-feedback">Please provide an email or phone number.</div>
+                <div id="emailHelp" class="form-text">We will send your confirmation and reminders here.</div>
+                <div class="invalid-feedback">Please provide a valid email address.</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="phone">Phone number</label>
+                <input
+                  type="tel"
+                  class="form-control reactive-field"
+                  id="phone"
+                  required
+                  inputmode="tel"
+                  pattern="^(?:\+?1\s?)?(?:\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}$"
+                  aria-describedby="phoneHelp"
+                />
+                <div id="phoneHelp" class="form-text">Format example: (613) 345-6789.</div>
+                <div class="invalid-feedback">Please provide a valid phone number.</div>
               </div>
 
               <div class="mb-0">
                 <label class="form-label" for="notes">Notes (optional)</label>
-                <textarea class="form-control" id="notes" rows="3" placeholder="Allergies, sensitivities, or style goals"></textarea>
+                <textarea class="form-control reactive-field" id="notes" rows="3" placeholder="Allergies, sensitivities, or style goals"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-4" aria-labelledby="payment-title">
+          <h2 id="payment-title" class="h5 mb-3"><i class="fa-solid fa-credit-card me-2 section-title-icon" aria-hidden="true"></i>5. Payment</h2>
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="mb-3">
+                <label class="form-label" for="card-name">Name on card</label>
+                <input type="text" class="form-control reactive-field" id="card-name" required pattern="^[A-Za-z][A-Za-z\s'-]{1,59}$" />
+                <div class="invalid-feedback">Enter the name shown on your card.</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="card-number">Card number</label>
+                <input type="text" class="form-control reactive-field" id="card-number" required inputmode="numeric" maxlength="19" pattern="^(?:\d{4}[ -]?){3}\d{4}$" placeholder="1234 5678 9012 3456" />
+                <div class="invalid-feedback">Enter a valid 16-digit card number.</div>
+              </div>
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="card-expiry">Expiry (MM/YY)</label>
+                  <input type="text" class="form-control reactive-field" id="card-expiry" required maxlength="5" pattern="^(0[1-9]|1[0-2])\/\d{2}$" placeholder="MM/YY" />
+                  <div class="invalid-feedback">Enter a valid expiration date.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="card-cvv">CVV</label>
+                  <input type="text" class="form-control reactive-field" id="card-cvv" required inputmode="numeric" maxlength="4" pattern="^\d{3,4}$" placeholder="123" />
+                  <div class="invalid-feedback">Enter a valid 3 or 4 digit CVV.</div>
+                </div>
               </div>
             </div>
           </div>
@@ -392,11 +475,18 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       const dateInput = document.getElementById("date");
       const timeInput = document.getElementById("time");
       const nameInput = document.getElementById("name");
-      const contactInput = document.getElementById("contact");
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+      const cardNameInput = document.getElementById("card-name");
+      const cardNumberInput = document.getElementById("card-number");
+      const cardExpiryInput = document.getElementById("card-expiry");
+      const cardCvvInput = document.getElementById("card-cvv");
+      const availabilityFeedback = document.getElementById("availability-feedback");
       const summary = document.getElementById("selection-summary");
       const serviceInputs = document.querySelectorAll('input[name="service"]');
       const staffInputs = document.querySelectorAll('input[name="staff"]');
@@ -413,12 +503,55 @@
       const allTimeSlots = Array.from(timeInput.options)
         .slice(1)
         .map((option) => option.value);
+      const STAFF_OFF_DAYS = {
+        Sofia: [2],
+        Malik: [3],
+        Sabrina: [1],
+        Anne: [4],
+        Link: [5],
+      };
+      const STAFF_BLOCKED_TIMES = {
+        Sofia: ["10:00 AM", "02:00 PM"],
+        Malik: ["09:00 AM", "03:00 PM"],
+        Sabrina: ["11:00 AM", "01:00 PM"],
+        Anne: ["12:00 PM", "04:00 PM"],
+        Link: ["10:00 AM", "12:00 PM"],
+      };
+      const BUSINESS_CLOSE_MINUTES = 17 * 60;
+      let datePicker;
 
-      dateInput.min = new Date().toISOString().split("T")[0];
+      const topNav = document.getElementById("topNav");
+      const topNavCollapse = topNav ? new bootstrap.Collapse(topNav, { toggle: false }) : null;
+      const tooltipTargets = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      const tooltipInstances = [];
+
+      tooltipTargets.forEach((el) => {
+        const instance = new bootstrap.Tooltip(el, { trigger: "hover" });
+        tooltipInstances.push(instance);
+      });
 
       document
-        .querySelectorAll('[data-bs-toggle="tooltip"]')
-        .forEach((el) => new bootstrap.Tooltip(el));
+        .querySelectorAll("#topNav .nav-link:not(.dropdown-toggle), #topNav .dropdown-item")
+        .forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth < 992 && topNav?.classList.contains("show")) {
+            topNavCollapse?.hide();
+          }
+        });
+      });
+
+      document
+        .querySelectorAll('input[data-bs-toggle="tooltip"], textarea[data-bs-toggle="tooltip"], select[data-bs-toggle="tooltip"]')
+        .forEach((field) => {
+          field.addEventListener("focus", () => {
+            const tip = bootstrap.Tooltip.getInstance(field);
+            tip?.hide();
+          });
+          field.addEventListener("input", () => {
+            const tip = bootstrap.Tooltip.getInstance(field);
+            tip?.hide();
+          });
+        });
 
       serviceInfoModal.addEventListener("show.bs.modal", (event) => {
         const trigger = event.relatedTarget;
@@ -430,30 +563,71 @@
         return document.querySelector(`input[name="${name}"]:checked`)?.value || "";
       }
 
-      function getRandomSubset(values, min, max) {
-        const pool = [...values];
-        const targetSize = Math.min(
-          pool.length,
-          Math.floor(Math.random() * (max - min + 1)) + min,
-        );
+      function parseServiceDuration(serviceValue) {
+        const durationText = serviceValue.split("|")[2] || "60 min";
+        const minutes = Number.parseInt(durationText, 10);
+        return Number.isFinite(minutes) ? minutes : 60;
+      }
 
-        for (let i = pool.length - 1; i > 0; i -= 1) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [pool[i], pool[j]] = [pool[j], pool[i]];
+      function slotToMinutes(slot) {
+        const match = slot.match(/^(\d{2}):(\d{2})\s(AM|PM)$/);
+        if (!match) return 0;
+        let hours = Number.parseInt(match[1], 10);
+        const minutes = Number.parseInt(match[2], 10);
+        const meridiem = match[3];
+        if (hours === 12) hours = 0;
+        if (meridiem === "PM") hours += 12;
+        return hours * 60 + minutes;
+      }
+
+      function getDisabledDateFn() {
+        const selectedStaff = getCheckedValue("staff");
+        const offDays = STAFF_OFF_DAYS[selectedStaff] || [];
+
+        return (date) => {
+          const day = date.getDay();
+          const isWeekend = day === 0 || day === 6;
+          return isWeekend || offDays.includes(day);
+        };
+      }
+
+      function refreshDateAvailability() {
+        datePicker.set("disable", [getDisabledDateFn()]);
+
+        if (!dateInput.value) {
+          availabilityFeedback.textContent = "Weekends are unavailable. Stylist off-days are greyed out.";
+          return;
         }
 
-        const picked = pool.slice(0, targetSize);
-        const ordered = values.filter((slot) => picked.includes(slot));
-        return ordered;
+        const selectedDate = new Date(`${dateInput.value}T12:00:00`);
+        if (getDisabledDateFn()(selectedDate)) {
+          datePicker.clear();
+          availabilityFeedback.textContent =
+            "That date is unavailable for the selected stylist. Please choose another day.";
+        }
       }
 
       function updateAvailableTimes() {
         const selectedStaff = getCheckedValue("staff");
+        const selectedService = getCheckedValue("service");
         const previousTime = timeInput.value;
-        const availableTimes =
-          selectedStaff && selectedStaff !== "No preference"
-            ? getRandomSubset(allTimeSlots, 2, 5)
-            : allTimeSlots;
+        const selectedDate = dateInput.value;
+        const duration = parseServiceDuration(selectedService || "");
+        const blockedTimes = STAFF_BLOCKED_TIMES[selectedStaff] || [];
+
+        if (!selectedDate) {
+          timeInput.value = "";
+          timeInput.disabled = true;
+          availabilityFeedback.textContent = "Choose a date first to view available times.";
+          return;
+        }
+
+        const availableTimes = allTimeSlots.filter((slot) => {
+          const startsAt = slotToMinutes(slot);
+          const endsAt = startsAt + duration;
+          const endsBeforeClose = endsAt <= BUSINESS_CLOSE_MINUTES;
+          return endsBeforeClose && !blockedTimes.includes(slot);
+        });
 
         timeInput.innerHTML = '<option value="" selected>Select a time slot</option>';
         availableTimes.forEach((slot) => {
@@ -468,6 +642,11 @@
         } else {
           timeInput.value = "";
         }
+
+        timeInput.disabled = false;
+        availabilityFeedback.textContent = availableTimes.length
+          ? "Only available appointment times are shown for this stylist and day."
+          : "No times are available for the selected options. Choose another date or stylist.";
       }
 
       function updateSelectedState(name) {
@@ -485,10 +664,14 @@
         const date = dateInput.value;
         const time = timeInput.value;
         const name = nameInput.value.trim();
-        const contact = contactInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const cardName = cardNameInput.value.trim();
+        const cardNumber = cardNumberInput.value.trim();
+        const cardExpiry = cardExpiryInput.value.trim();
+        const cardCvv = cardCvvInput.value.trim();
 
         const hasDate = Boolean(date);
-        timeInput.disabled = !hasDate;
         if (!hasDate && timeInput.value) {
           timeInput.value = "";
         }
@@ -504,20 +687,96 @@
         let step = 1;
         if (service) step = 2;
         if (service && date && displayedTime) step = 3;
-        if (service && date && displayedTime && name && contact) step = 4;
+        if (service && date && displayedTime && name && email && phone) step = 4;
+        if (
+          service &&
+          date &&
+          displayedTime &&
+          name &&
+          email &&
+          phone &&
+          cardName &&
+          cardNumber &&
+          cardExpiry &&
+          cardCvv
+        ) {
+          step = 5;
+        }
 
-        const percentMap = { 1: 25, 2: 50, 3: 75, 4: 100 };
+        const percentMap = { 1: 20, 2: 40, 3: 60, 4: 80, 5: 100 };
         progressBar.style.width = `${percentMap[step]}%`;
         progressBar.parentElement.setAttribute("aria-valuenow", String(percentMap[step]));
-        progressText.textContent = `Step ${step} of 4`;
+        progressText.textContent = `Step ${step} of 5`;
 
-        const readyToConfirm = Boolean(service && date && displayedTime && name && contact);
+        const readyToConfirm = Boolean(
+          service &&
+            date &&
+            displayedTime &&
+            name &&
+            email &&
+            phone &&
+            cardName &&
+            cardNumber &&
+            cardExpiry &&
+            cardCvv
+        );
         submitBtn.classList.toggle("d-none", !readyToConfirm);
+      }
+
+      function validateNames() {
+        const nameRegex = /^[A-Za-z][A-Za-z\s'-]{1,59}$/;
+        nameInput.setCustomValidity(
+          nameInput.value && !nameRegex.test(nameInput.value.trim())
+            ? "Name can only contain letters, spaces, apostrophes, or hyphens."
+            : "",
+        );
+        cardNameInput.setCustomValidity(
+          cardNameInput.value && !nameRegex.test(cardNameInput.value.trim())
+            ? "Card name can only contain letters, spaces, apostrophes, or hyphens."
+            : "",
+        );
+      }
+
+      function validatePhone() {
+        const phoneRegex =
+          /^(?:\+?1\s?)?(?:\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}$/;
+        phoneInput.setCustomValidity(
+          phoneInput.value && !phoneRegex.test(phoneInput.value.trim())
+            ? "Please enter a valid phone number."
+            : "",
+        );
+      }
+
+      function validateCardDetails() {
+        const cardRegex = /^(?:\d{4}[ -]?){3}\d{4}$/;
+        cardNumberInput.setCustomValidity(
+          cardNumberInput.value && !cardRegex.test(cardNumberInput.value.trim())
+            ? "Please enter a valid 16-digit card number."
+            : "",
+        );
+
+        const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+        let expiryError = "";
+        if (cardExpiryInput.value && !expiryRegex.test(cardExpiryInput.value.trim())) {
+          expiryError = "Enter a valid expiration date.";
+        } else if (expiryRegex.test(cardExpiryInput.value.trim())) {
+          const [month, year] = cardExpiryInput.value.split("/");
+          const expiryDate = new Date(2000 + Number.parseInt(year, 10), Number.parseInt(month, 10), 0);
+          if (expiryDate < new Date()) expiryError = "Your card’s expiration year is in the past.";
+        }
+        cardExpiryInput.setCustomValidity(expiryError);
+      }
+
+      function runValidationFeedback() {
+        validateNames();
+        validatePhone();
+        validateCardDetails();
       }
 
       serviceInputs.forEach((input) => {
         input.addEventListener("change", () => {
           serviceError.classList.add("d-none");
+          updateAvailableTimes();
           updateSelectedState("service");
           updateFlow();
         });
@@ -525,23 +784,64 @@
 
       staffInputs.forEach((input) => {
         input.addEventListener("change", () => {
+          refreshDateAvailability();
           updateAvailableTimes();
           updateSelectedState("staff");
           updateFlow();
         });
       });
 
-      [dateInput, timeInput, nameInput, contactInput].forEach((input) => {
+      [dateInput, timeInput, nameInput, emailInput, phoneInput, cardNameInput].forEach((input) => {
         input.addEventListener("input", updateFlow);
         input.addEventListener("change", updateFlow);
       });
 
+      cardNumberInput.addEventListener("input", () => {
+        const digitsOnly = cardNumberInput.value.replace(/\D/g, "").slice(0, 16);
+        cardNumberInput.value = digitsOnly.replace(/(\d{4})(?=\d)/g, "$1 ");
+        runValidationFeedback();
+        updateFlow();
+      });
+
+      cardExpiryInput.addEventListener("input", () => {
+        const digitsOnly = cardExpiryInput.value.replace(/\D/g, "").slice(0, 4);
+        cardExpiryInput.value =
+          digitsOnly.length > 2
+            ? `${digitsOnly.slice(0, 2)}/${digitsOnly.slice(2)}`
+            : digitsOnly;
+        runValidationFeedback();
+        updateFlow();
+      });
+
+      cardCvvInput.addEventListener("input", () => {
+        cardCvvInput.value = cardCvvInput.value.replace(/\D/g, "").slice(0, 4);
+        updateFlow();
+      });
+
+      [nameInput, phoneInput, cardNameInput, cardNumberInput, cardExpiryInput].forEach((input) => {
+        input.addEventListener("input", runValidationFeedback);
+        input.addEventListener("change", runValidationFeedback);
+      });
+
+      datePicker = flatpickr(dateInput, {
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        disable: [getDisabledDateFn()],
+        onChange: () => {
+          updateAvailableTimes();
+          updateFlow();
+        },
+      });
+
+      refreshDateAvailability();
       updateAvailableTimes();
+      updateSelectedState("service");
       updateSelectedState("staff");
       updateFlow();
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
+        runValidationFeedback();
 
         if (!getCheckedValue("service")) {
           serviceError.classList.remove("d-none");
@@ -560,7 +860,8 @@
           spinner.classList.add("d-none");
           submitBtn.disabled = false;
 
-          confirmationText.textContent = `${nameInput.value.trim()}, your ${getCheckedValue("service")} appointment is booked for ${dateInput.value} at ${timeInput.value}.`;
+          const maskedCard = cardNumberInput.value.replace(/\D/g, "").slice(-4);
+          confirmationText.textContent = `${nameInput.value.trim()}, your ${getCheckedValue("service")} appointment is booked for ${dateInput.value} at ${timeInput.value}. Payment method ending in ${maskedCard} has been saved.`;
           confirmation.classList.remove("d-none");
           confirmation.scrollIntoView({ behavior: "smooth" });
         }, 700);
