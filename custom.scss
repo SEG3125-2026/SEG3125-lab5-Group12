@@ -5,7 +5,7 @@
   --muted: #6b7280;
   --bg: #f6f7f9;
   --card: #ffffff;
-  --accent: #1f6feb;
+  --accent: #0c4daf;
 }
 
 body {
@@ -16,6 +16,10 @@ body {
 
 .app-shell {
   max-width: 880px;
+}
+.bg-accent {
+  background-color: var(--accent) !important;
+  color: #fff !important;
 }
 
 .hero-simple {

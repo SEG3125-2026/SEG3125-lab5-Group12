@@ -3,13 +3,17 @@
   --muted: #6b7280;
   --bg: #f6f7f9;
   --card: #ffffff;
-  --accent: #1f6feb;
+  --accent: #0c4daf;
 }
 
 body {
   font-family: "Source Sans 3", sans-serif;
   background: var(--bg);
   color: var(--ink);
+}
+.bg-accent {
+  background-color: var(--accent) !important;
+  color: #fff !important;
 }
 
 .app-shell {
@@ -28,7 +32,7 @@ body {
 }
 
 .top-nav .dropdown-menu {
-  background: rgba(16, 24, 40, 0.98);
+  background: rgba(16, 24, 40, 0.94);
   border: 0;
   box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.2);
   margin-top: 0.35rem;

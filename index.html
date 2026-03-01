@@ -131,14 +131,14 @@
       </section>
 
       <form id="appointment-form" class="needs-validation" novalidate>
-        <section class="card shadow-sm mb-4">
+        <section class="card shadow-sm mb-4 sticky-top" style="top: 75px;">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h2 class="h5 mb-0">Booking Progress</h2>
-              <span class="badge text-bg-primary" id="progress-text">Step 1 of 5</span>
+              <span class="badge bg-accent" id="progress-text">Step 1 of 5</span>
             </div>
             <div class="progress" role="progressbar" aria-label="Booking progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
-              <div class="progress-bar" id="progress-bar" style="width: 20%"></div>
+              <div class="progress-bar bg-accent" id="progress-bar" style="width: 20%"></div>
             </div>
             <div class="alert alert-light border mt-3 mb-0" aria-live="polite">
               <strong>You chose:</strong>
@@ -164,7 +164,7 @@
                   data-service-details="A dry-cut technique performed on natural curls to ensure the shape is perfect when the hair is worn down."
                   aria-label="More info about Dry Curl Sculpting"
                 >
-                  <i class="bi bi-info-lg"></i>
+                  <i class="bi bi-info-lg" ></i>
                 </button>
                 <label class="card h-100 shadow-sm option-card" for="service-sculpting">
                   <img src="Images/Styling/curl.jpeg" class="card-img-top option-image" alt="Dry Curl Sculpting style result" />
@@ -403,7 +403,7 @@
                 <div class="invalid-feedback">Enter the name shown on your card.</div>
               </div>
               <div class="mb-3">
-                <label class="form-label" for="card-number">Card number</label>
+                <div class="d-flex align-items-center gap-2"><label class="form-label" for="card-number">Card number</label><i id="card-icon" class="fa-solid fa-credit-card"></i></div>
                 <input type="text" class="form-control reactive-field" id="card-number" required inputmode="numeric" maxlength="19" pattern="^(?:\d{4}[ -]?){3}\d{4}$" placeholder="1234 5678 9012 3456" />
                 <div class="invalid-feedback">Enter a valid 16-digit card number.</div>
               </div>
@@ -486,6 +486,7 @@
       const cardNumberInput = document.getElementById("card-number");
       const cardExpiryInput = document.getElementById("card-expiry");
       const cardCvvInput = document.getElementById("card-cvv");
+      const cardIcon = document.getElementById('card-icon');
       const availabilityFeedback = document.getElementById("availability-feedback");
       const summary = document.getElementById("selection-summary");
       const serviceInputs = document.querySelectorAll('input[name="service"]');
@@ -516,7 +517,24 @@
         Sabrina: ["11:00 AM", "01:00 PM"],
         Anne: ["12:00 PM", "04:00 PM"],
         Link: ["10:00 AM", "12:00 PM"],
+      }; 
+      const cardIcons = {
+        Visa: 'fa-brands fa-cc-visa',
+        Mastercard: 'fa-brands fa-cc-mastercard',
+        Discover: 'fa-brands fa-cc-discover',
+        JCB: 'fa-brands fa-cc-jcb',
+        Unknown: 'fa-solid fa-credit-card'
       };
+
+      const patterns = {
+        Visa: /^4/,
+        Mastercard: /^(5[1-5]|222[1-9]|22[3-9]|2[3-6]|27[01]|2720)/,
+        Amex: /^3[47]/,
+        Discover: /^(6011|622|64[4-9]|65)/,
+        Diners: /^3(0[0-5]|[68])/,
+        JCB: /^35(2[89]|[3-8][0-9])/
+      };
+
       const BUSINESS_CLOSE_MINUTES = 17 * 60;
       let datePicker;
 
@@ -723,53 +741,97 @@
         submitBtn.classList.toggle("d-none", !readyToConfirm);
       }
 
+      function toggleInvalidGlow(inputField, condition) {
+        if (condition) {
+          inputField.classList.add("is-invalid");
+        } else {
+          inputField.classList.remove("is-invalid");
+        }
+      }
+
       function validateNames() {
         const nameRegex = /^[A-Za-z][A-Za-z\s'-]{1,59}$/;
+        const isNameInvalid = nameInput.value && !nameRegex.test(nameInput.value.trim());
         nameInput.setCustomValidity(
-          nameInput.value && !nameRegex.test(nameInput.value.trim())
+          isNameInvalid
             ? "Name can only contain letters, spaces, apostrophes, or hyphens."
             : "",
         );
+        toggleInvalidGlow(nameInput, isNameInvalid);
+
+        const isCardNameInvalid = cardNameInput.value && !nameRegex.test(cardNameInput.value.trim());
         cardNameInput.setCustomValidity(
-          cardNameInput.value && !nameRegex.test(cardNameInput.value.trim())
+          isCardNameInvalid
             ? "Card name can only contain letters, spaces, apostrophes, or hyphens."
             : "",
         );
+        toggleInvalidGlow(cardNameInput, isCardNameInvalid);
       }
 
       function validatePhone() {
         const phoneRegex =
           /^(?:\+?1\s?)?(?:\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}$/;
+        const isPhoneInvalid = phoneInput.value && !phoneRegex.test(phoneInput.value.trim());
         phoneInput.setCustomValidity(
-          phoneInput.value && !phoneRegex.test(phoneInput.value.trim())
+          isPhoneInvalid
             ? "Please enter a valid phone number."
             : "",
         );
+        toggleInvalidGlow(phoneInput, isPhoneInvalid);
+      }
+
+      function validateEmail() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const isEmailInvalid = emailInput.value && !emailRegex.test(emailInput.value.trim());
+        emailInput.setCustomValidity(
+          isEmailInvalid
+            ? "Please enter a valid email address."
+            : "",
+        );
+        toggleInvalidGlow(emailInput, isEmailInvalid);
       }
 
       function validateCardDetails() {
         const cardRegex = /^(?:\d{4}[ -]?){3}\d{4}$/;
+        const isCardInvalid = cardNumberInput.value && !cardRegex.test(cardNumberInput.value.trim());
         cardNumberInput.setCustomValidity(
-          cardNumberInput.value && !cardRegex.test(cardNumberInput.value.trim())
+          isCardInvalid
             ? "Please enter a valid 16-digit card number."
             : "",
         );
+        toggleInvalidGlow(cardNumberInput, isCardInvalid);
 
         const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
         let expiryError = "";
+        let isExpiryInvalid = false;
         if (cardExpiryInput.value && !expiryRegex.test(cardExpiryInput.value.trim())) {
           expiryError = "Enter a valid expiration date.";
+          isExpiryInvalid = true;
         } else if (expiryRegex.test(cardExpiryInput.value.trim())) {
           const [month, year] = cardExpiryInput.value.split("/");
           const expiryDate = new Date(2000 + Number.parseInt(year, 10), Number.parseInt(month, 10), 0);
-          if (expiryDate < new Date()) expiryError = "Your card’s expiration year is in the past.";
+          if (expiryDate < new Date()) {
+            expiryError = "Your card’s expiration year is in the past.";
+            isExpiryInvalid = true;
+          }
         }
         cardExpiryInput.setCustomValidity(expiryError);
+        toggleInvalidGlow(cardExpiryInput, isExpiryInvalid);
+
+        const cvvRegex = /^\d{3,4}$/;
+        const isCvvInvalid = cardCvvInput.value && !cvvRegex.test(cardCvvInput.value.trim());
+        cardCvvInput.setCustomValidity(
+          isCvvInvalid
+            ? "Enter a valid 3 or 4 digit CVV."
+            : "",
+        );
+        toggleInvalidGlow(cardCvvInput, isCvvInvalid);
       }
 
       function runValidationFeedback() {
         validateNames();
         validatePhone();
+        validateEmail();
         validateCardDetails();
       }
 
@@ -801,6 +863,17 @@
         cardNumberInput.value = digitsOnly.replace(/(\d{4})(?=\d)/g, "$1 ");
         runValidationFeedback();
         updateFlow();
+
+        //New - Determine card type for icon display
+        let type = 'Unknown';
+        for (const [card, regex] of Object.entries(patterns)) {
+          if (regex.test(digitsOnly)) {
+            type = card;
+            break;
+          }
+        }
+
+        cardIcon.className = cardIcons[type];
       });
 
       cardExpiryInput.addEventListener("input", () => {
@@ -814,11 +887,11 @@
       });
 
       cardCvvInput.addEventListener("input", () => {
-        cardCvvInput.value = cardCvvInput.value.replace(/\D/g, "").slice(0, 4);
+        cardCvvInput.value = cardCvvInput.value.replace(/\D/g, "").slice(0, 3);
         updateFlow();
       });
 
-      [nameInput, phoneInput, cardNameInput, cardNumberInput, cardExpiryInput].forEach((input) => {
+      [nameInput, phoneInput, cardNameInput, cardNumberInput, cardExpiryInput, emailInput].forEach((input) => {
         input.addEventListener("input", runValidationFeedback);
         input.addEventListener("change", runValidationFeedback);
       });
