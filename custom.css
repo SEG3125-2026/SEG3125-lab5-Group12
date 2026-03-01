@@ -11,6 +11,7 @@ body {
   background: var(--bg);
   color: var(--ink);
 }
+
 .bg-accent {
   background-color: var(--accent) !important;
   color: #fff !important;
@@ -23,6 +24,7 @@ body {
 .top-nav {
   background: rgba(16, 24, 40, 0.94);
   backdrop-filter: blur(4px);
+  z-index: 1040;
 }
 
 .top-nav .navbar-brand,
