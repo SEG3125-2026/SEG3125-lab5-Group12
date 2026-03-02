@@ -9,8 +9,8 @@
 
 ### Members & Contributions
 -> Each digged into our last lab 4 submission and updated according to the TA's feedback and based on Don Norman’s Design Principles. 
-| Member | Contribution |
-| --- | --- |
+| Member |
+| --- |
 | Alison Emilien (33%) |
 | Ashley Woeldike (33%) |
 | Quinn Jackson (33%) |
